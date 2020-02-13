@@ -1,0 +1,51 @@
+{% extends 'foodrecipe/base.html' %}
+{% load static %}
+
+{%block stl%}
+<style type="text/css">
+    .bx{
+        background-color: white;
+        margin-top: 0px;
+        padding-bottom: 80px;
+    }
+    h2{
+        font-family: 'Odibee Sans', cursive;
+        margin-left: 35%;
+        padding-bottom: 50px;
+    }
+</style>
+{%endblock%}
+
+{%block home%}
+<div class="row bx">
+    <div class="col bx">
+        <h2>Add Your Own Recipe</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-push-1">
+            <form role="form" action="{%url 'add_recipe'%}" enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Name</label>
+              <input type="text" class="form-control" placeholder="Enter Name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ingredients</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="ingredients"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Steps</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="9" name="steps"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="custom-file-label" for="validatedCustomFile">Upload Food Image</label>
+                <input type="file" name="image" class="custom-file-input" id="validatedCustomFile" required>
+            </div>
+            <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

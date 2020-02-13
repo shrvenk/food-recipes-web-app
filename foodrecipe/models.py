@@ -8,4 +8,5 @@ class fooddetail(models.Model):
     description = models.TextField()
     ingredients = models.TextField()
     steps = models.TextField()
-    image = models.ImageField(null=True)
+    image = models.FileField(blank=True,null=True)
+    

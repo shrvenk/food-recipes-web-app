@@ -1,0 +1,68 @@
+{% extends 'foodrecipe/base.html' %}
+{% load static %}
+
+{%block stl%}
+<style type="text/css">
+  .image{
+      height: 350px;
+      margin-left: 50px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      margin-right: 50px;
+  }
+  .bx{
+      background-color: white;
+  }
+  .name{
+      font-size: 40px;
+      margin-bottom: 20px;
+      padding-top: 20px;
+      font-family: 'Odibee Sans', cursive;
+      border-bottom: 2px solid black;
+      word-wrap: break-word;
+  }
+  .des{
+      font-size: 17px;
+      font-family: 'Roboto', sans-serif;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px;
+      padding-bottom: 50px;
+      word-wrap: break-word;
+  }
+  .steps{
+    font-size: 17px;
+      font-family: 'Roboto', sans-serif;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px;
+      padding-bottom: 50px;
+      word-wrap: break-word;
+      margin-bottom: 100px;
+  }
+</style>
+{%endblock%}
+
+{%block home%}
+<div class="row">
+    <div class="col-md-12 bx">
+        <div class="row">
+            <div class="col-md-5 bg">
+                <img src="{{detail.image.url}}" alt="{{detail.pk}}" class="image">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col name">{{detail.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col des">Description : {{detail.description}}</div>
+                </div>
+                <div class="row">
+                    <div class="col des">Ingredients : {{detail.ingredients}}</div>
+                </div>
+                <div class="row">
+                    <div class="col steps">Method : {{detail.steps}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
