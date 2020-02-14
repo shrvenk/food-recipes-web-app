@@ -5,6 +5,7 @@
 <style type="text/css">
   .image{
       height: 350px;
+      max-width: 430px;
       margin-left: 50px;
       margin-top: 50px;
       margin-bottom: 50px;
@@ -38,6 +39,19 @@
       word-wrap: break-word;
       margin-bottom: 100px;
   }
+  .glyphicon-pencil{
+      float: right;
+      font-size: 25px;
+      text-align: center;
+      margin-top: 20px;
+      padding: 5px;
+      color: white;
+      background-color: black;
+  }
+  .glyphicon-pencil:hover{
+      color: black;
+      background-color: white;   
+  }
 </style>
 {%endblock%}
 
@@ -50,7 +64,13 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col name">{{detail.name}}</div>
+                    <div class="col name">{{detail.name}}
+                        {% if user.is_authenticated %}
+                        {%if detail.author.username == request.user.get_username%}
+                        <a href="{%url 'recipe_edit' pk=detail.pk%}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        {%endif%}
+                        {%endif%}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col des">Description : {{detail.description}}</div>

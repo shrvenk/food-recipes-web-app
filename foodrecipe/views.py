@@ -24,9 +24,22 @@ def add_recipe(request):
         form = addForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             obj = form.save(commit=False)
+            obj.author = request.user
             obj.save()
-            return HttpResponseRedirect(reverse('post_recipe'))
+            return redirect('food_detail', pk=obj.pk)
     return render(request,'foodrecipe/add_recipe.html',{})
+
+def recipe_edit(request,pk):
+    post = get_object_or_404(fooddetail, pk=pk)
+    if request.method == "POST":
+        form = addForm(request.POST or None, request.FILES or None,instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('food_detail', pk=post.pk)
+    else:
+        form = addForm(instance=post)
+    return render(request, 'foodrecipe/recipe_edit.html', {'form': form,'pk':pk})
    
 def food_detail(request,pk):
     detail = get_object_or_404(fooddetail,pk=pk)
@@ -82,4 +95,15 @@ def search(request):
                 dictionary = dict(request=request, messages = msg_to_html)
                 dictionary.update(csrf(request))
             return render(request,'foodrecipe/base.html', dictionary)
+
+def my_recipe(request):
+    detail = fooddetail.objects.filter(author=request.user)
+    if detail:
+        return render(request,'foodrecipe/home.html',{'detail':detail})
+    else:
+        msg_to_html = custom_message('No Recipes are Added', TagType.danger)
+        dictionary = dict(request=request, messages = msg_to_html)
+        dictionary.update(csrf(request))
+        return render(request,'foodrecipe/base.html', dictionary)
+
 

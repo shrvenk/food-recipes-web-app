@@ -7,6 +7,13 @@ class addForm(forms.ModelForm):
     class Meta:
         model = fooddetail
         fields = ('name', 'description','ingredients','steps','image')
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control'}),
+            'description': forms.Textarea(attrs={'class':'form-control'}),
+            'ingredients': forms.Textarea(attrs={'class':'form-control'}),
+            'steps': forms.Textarea(attrs={'class':'form-control'}),
+            'image': forms.FileInput(attrs={'class':'form-control'})
+        }
 
 class RegForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

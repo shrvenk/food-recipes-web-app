@@ -1,0 +1,40 @@
+{% extends 'foodrecipe/base.html' %}
+{% load static %}
+
+{%block stl%}
+<style type="text/css">
+    .bx{
+        background-color: white;
+        margin-top: 0px;
+        padding-bottom: 80px;
+    }
+    h2{
+        font-family: 'Odibee Sans', cursive;
+        margin-left: 35%;
+        padding-bottom: 50px;
+    }
+    small{
+        color: red;
+    }
+</style>
+{%endblock%}
+
+{%block home%}
+<div class="row bx">
+    <div class="col bx">
+        <h2>Add Your Own Recipe</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-push-1">
+            <form role="form" action="{%url 'recipe_edit' pk=pk%}" enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
+            {%for field in form%}
+            <div class="form-group">
+              <label for="exampleFormControlInput1" >{{field.html_name}}</label>
+              {{field}}
+            </div>
+            {%endfor%}
+            <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
