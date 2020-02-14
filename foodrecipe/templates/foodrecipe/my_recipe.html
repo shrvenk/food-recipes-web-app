@@ -1,6 +1,6 @@
 {% extends 'foodrecipe/base.html' %}
 {% load static %}
-{%block activity_home%}
+{%block activity_my_recipe%}
 class = 'active'
 {%endblock%}
 {%block stl%}
@@ -84,7 +84,7 @@ class = 'active'
                 <div class="row  rimg">
                     <div class="col-md-12 cont">
                         {%if food.image%}
-                        <a href="{%url 'food_detail' pk=food.pk%}"><img class="food_image" src="{{food.image.url}}" alt="{{food.name}}"></a>
+                        <img class="food_image" src="{{food.image.url}}" alt="{{food.name}}">
                         {%endif%}
                     </div>
                 </div>
@@ -108,5 +108,14 @@ class = 'active'
         </div>
     </div>
     {%endfor%}
+    {% if messages %}
+        {% block messages %}
+            <div class="col-md-6 col-md-push-3">
+            <div class="alert-box" >
+            <div class="{{ messages.tag }}" id="div_msg" role="alert"> {{ messages.message }}  </div>
+            </div>
+            </div>
+        {% endblock %}
+    {% endif %}
 </div>
 {%endblock%}

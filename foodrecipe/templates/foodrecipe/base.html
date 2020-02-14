@@ -61,6 +61,7 @@
     }
     .thank_you{
         text-align: center;
+        margin-top: 30px;
     }
     .accnt{
         margin-top: 10px;
@@ -99,7 +100,7 @@
         justify-content: center;
         text-align:center;
         align-items: center;
-        margin-top: 10pt;
+        margin-top: 25px;
     }
     .sign_in>button{
         padding-left: 50pt;
@@ -156,17 +157,6 @@
                                         <h5>New to Shrvenk ?<a href="" data-toggle="modal" data-target="#create_account">Create Account</a></h5>
                                     </li> 
                                     {%endif%}
-                                    {%if request.user.is_authenticated %}
-                                    <div class="row">
-                                        <div class="col-md-5"></div>
-                                        <div class="col-md-6" style="background-color:#f3f0f5;">
-                                            <ul class="list">
-                                            <li><a href="#">Profile</a></li>
-                                            <li><a href="{%url 'my_recipe'%}">My Recipes</a></li>
-                                            </ul>
-                                        </div>
-                                    </div> 
-                                    {%endif%} 
                                 </ul>
                             </li>
                         </ul>
@@ -226,8 +216,10 @@
                         <div class="container-fluid">
                             <ul class="nav navbar-nav">
                                 <li {%block activity_home%}{%endblock%}><a href="{%url 'post_recipe'%}">Home</a> </li>
-                                <li {%block activity_posts%}{%endblock%}><a href="#">Posts</a> </li>
-                                <li {%block activity_contact%}{%endblock%}><a href="#">Contact</a> </li>
+                                <li {%block activity_contact%}{%endblock%}><a href="{%url 'contact'%}">Contact</a> </li>
+                                {%if request.user.is_authenticated%}
+                                <li {%block activity_my_recipe%}{%endblock%}><a href="{%url 'my_recipe'%}">My Recipes</a></li>
+                                {%endif%}
                             </ul>
                             {%if request.user.is_authenticated %}
                             <ul class="nav navbar-right pls">

@@ -99,11 +99,12 @@ def search(request):
 def my_recipe(request):
     detail = fooddetail.objects.filter(author=request.user)
     if detail:
-        return render(request,'foodrecipe/home.html',{'detail':detail})
+        return render(request,'foodrecipe/my_recipe.html',{'detail':detail})
     else:
         msg_to_html = custom_message('No Recipes are Added', TagType.danger)
         dictionary = dict(request=request, messages = msg_to_html)
         dictionary.update(csrf(request))
-        return render(request,'foodrecipe/base.html', dictionary)
+        return render(request,'foodrecipe/my_recipe.html', dictionary)
 
-
+def contact(request):
+    return render(request,'foodrecipe/contact.html',{})
