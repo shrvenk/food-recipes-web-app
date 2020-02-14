@@ -1,5 +1,5 @@
 **Checkout http://venkatesh123.pythonanywhere.com/**<br><br><br>
-  **Deploy on your Local Server** 
+  **Deploy on your Local Server :** 
    * update pip 
    >python -m pip install --update pip
    * create requirements.txt file type Django~=2.2.4 in it then run 
