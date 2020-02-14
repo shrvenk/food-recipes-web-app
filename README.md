@@ -1,4 +1,4 @@
-**Visit http://venkatesh123.pythonanywhere.com/ **<br><br><br>
+**Visit http://venkatesh123.pythonanywhere.com/** <br><br><br>
   **Deploy on your Local Server :** 
    * update pip 
    >python -m pip install --update pip
