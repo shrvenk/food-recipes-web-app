@@ -1,4 +1,4 @@
-**Checkout http://venkatesh123.pythonanywhere.com/**<br><br><br>
+**Visit http://venkatesh123.pythonanywhere.com/ **<br><br><br>
   **Deploy on your Local Server :** 
    * update pip 
    >python -m pip install --update pip
@@ -25,8 +25,8 @@
     you have to install pillow which supports in accessing images
     >pip install pillow 
     Html, css and bootstrap has been used to design the frontend.
-    
-    <br><br><br>
+    I have made this site online by uploading it on pythonanywhere web hosting server.
+
   **Execution of the webapp**
  * This a web application that displays Food Recipes.
  * User can search for food recipes based on name or the ingredients used.
