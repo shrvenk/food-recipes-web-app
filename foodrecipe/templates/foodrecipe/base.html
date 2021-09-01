@@ -16,6 +16,14 @@
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-S53XWE1FQD');
+    </script>
     <style type="text/css">
     .whole{
         background-color: white;
@@ -149,7 +157,8 @@
                                     </li>
                                     {%else%}
                                     <li class="sign_in">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#sign_in">
+                                        <button type="button" onclick="gtag('event', 'log_in', {'method':'direct'});"
+                                        class="btn btn-success" data-toggle="modal" data-target="#sign_in">
                                             Sign In
                                         </button>   
                                     </li>
