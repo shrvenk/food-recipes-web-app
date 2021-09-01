@@ -6,6 +6,31 @@ class = 'active'
 {%block title%}
     <title>Home</title>
 {%endblock%}
+{%block script%}
+<script>
+    if (window.performance) {
+    var timeSincePageLoad = Math.round(performance.now());
+    gtag('event', 'timing_complete', {
+        'name': 'load',
+        'value': timeSincePageLoad,
+        'event_category': 'JS Dependencies'
+    });
+    }
+    var form = document.getElementById('signup-form');
+    // Add a listener for the "submit" event.
+    function recordSubmitTime(value) {
+        if (window.performance) {
+        const timeAtSubmit = Math.round(performance.now());
+        const time = timeAtSubmit - timeSincePageLoad ;
+        gtag('event', 'time_spent', {
+            'screen': 'Home',
+            'value': time,
+            'event_category': value
+        });
+        }
+    }    
+</script>
+{%endblock%}
 {%block stl%}
 <style type="text/css">
     .block{
@@ -90,13 +115,13 @@ class = 'active'
                 <div class="row  rimg">
                     <div class="col-md-12 cont">
                         {%if food.image%}
-                        <a href="{%url 'food_detail' pk=food.pk%}"><img class="food_image" src="{{food.image.url}}" alt="{{food.name}}"></a>
+                        <a href="{%url 'food_detail' pk=food.pk%}" onclick="recordSubmitTime('redirectToFoodDetail')"><img class="food_image" src="{{food.image.url}}" alt="{{food.name}}"></a>
                         {%endif%}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col name">
-                        <a href="{%url 'food_detail' pk=food.pk%}" class="name_link">{{food.name}}</a>
+                        <a href="{%url 'food_detail' pk=food.pk%}" onclick="recordSubmitTime('redirectToFoodDetail')" class="name_link">{{food.name}}</a>
                     </div>
                 </div>
                 <div class="row">
