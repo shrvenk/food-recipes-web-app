@@ -76,6 +76,9 @@ class = 'active'
 {%endblock%}
 
 {%block home%}
+<script>
+    gtag('event', 'screen_view', { 'screen_name': 'Home'});
+</script>
 <div class="row ">
     {%for food in detail%}
     <div class="col-md-4 block">
