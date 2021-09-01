@@ -63,7 +63,7 @@
     <div class="col-md-12 bx">
         <div class="row">
             <div class="col-md-5 bg">
-                <img src="{{detail.image.url}}" alt="{{detail.pk}}" class="image">
+                <img onload="gtag('event', 'screen_view', { 'screen_name': 'Food_detail'});"src="{{detail.image.url}}" alt="{{detail.pk}}" class="image">
             </div>
             <div class="col-md-6">
                 <div class="row">
