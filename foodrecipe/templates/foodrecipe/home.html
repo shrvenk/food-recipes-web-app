@@ -7,6 +7,8 @@ class = 'active'
     <title>Home</title>
 {%endblock%}
 {%block script%}
+<script src="riveted.min.js"></script>
+<script>riveted.init();</script>
 <script>
     if (window.performance) {
     var timeSincePageLoad = Math.round(performance.now());
